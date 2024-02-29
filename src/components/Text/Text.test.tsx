@@ -1,12 +1,6 @@
-import {
-  act,
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import user from "@testing-library/user-event";
 import Text from "./Text";
-import e from "express";
 
 // grouping tests together using describe
 describe("Component Tests", () => {
@@ -32,9 +26,7 @@ describe("Component Tests", () => {
     render(<Text text="Hello" />);
     const openButton = await screen.findByText("Open");
     expect(openButton).toBeInTheDocument();
-    act(() => {
-      openButton.click();
-    });
+    user.click(openButton);
     const buttonElement = await screen.findByRole("button", {
       name: "Button",
     });
@@ -43,3 +35,14 @@ describe("Component Tests", () => {
     expect(openButton2).not.toBeInTheDocument();
   });
 });
+
+// use wrappers while render to provide providers and context
+// render hook is used to test hooks
+// jest.fn is used to mock functions
+// jest.mock is used to mock modules
+// jest.spyOn is used to spy on functions
+
+
+// Mocking Http Requests
+// will look into it later
+
