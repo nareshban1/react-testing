@@ -1,5 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import {
+  act,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import Text from "./Text";
+import e from "express";
 
 // grouping tests together using describe
 describe("Component Tests", () => {
@@ -19,8 +26,20 @@ describe("Component Tests", () => {
 
     const textArea = screen.getByRole("textbox", { name: "Info" });
     expect(textArea).toBeInTheDocument();
+  });
 
-    const buttonElement = screen.getByRole("button");
+  test("Button is displayed", async () => {
+    render(<Text text="Hello" />);
+    const openButton = await screen.findByText("Open");
+    expect(openButton).toBeInTheDocument();
+    act(() => {
+      openButton.click();
+    });
+    const buttonElement = await screen.findByRole("button", {
+      name: "Button",
+    });
     expect(buttonElement).toBeInTheDocument();
+    const openButton2 = screen.queryByText("Open");
+    expect(openButton2).not.toBeInTheDocument();
   });
 });

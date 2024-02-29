@@ -1,6 +1,7 @@
 import React from "react";
 
 const Text = ({ text }: { text: string }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <div>
       {text}
@@ -13,7 +14,13 @@ const Text = ({ text }: { text: string }) => {
         </select>
         <label htmlFor="info">Info</label>
         <textarea name="info" id="info" />
-        <button>Button</button>
+        {isOpen ? (
+          <button>Button</button>
+        ) : (
+          <button type="button" onClick={() => setIsOpen(true)}>
+            Open
+          </button>
+        )}
       </form>
     </div>
   );
