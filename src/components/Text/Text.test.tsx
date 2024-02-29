@@ -42,7 +42,5 @@ describe("Component Tests", () => {
 // jest.mock is used to mock modules
 // jest.spyOn is used to spy on functions
 
-
 // Mocking Http Requests
 // will look into it later
-
