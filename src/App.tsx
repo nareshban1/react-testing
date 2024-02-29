@@ -1,5 +1,6 @@
 import "./App.css";
 import Text from "./components/Text/Text";
+import React from "react";
 
 function App() {
   return (

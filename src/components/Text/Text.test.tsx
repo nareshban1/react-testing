@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import Text from "./Text";
+import React from "react";
 
 // grouping tests together using describe
 describe("Component Tests", () => {
